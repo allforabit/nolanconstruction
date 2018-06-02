@@ -24,7 +24,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <Card>
-        <Heading>HELLO</Heading>
+        <Heading>HELLO WORLD</Heading>
         <Button>Rebass</Button>
       </Card>
     )
