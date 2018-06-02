@@ -22,7 +22,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-helmet": "^5.2.0",
-    "rebass": "^1.0.7",
+    "rebass": "^2.0.0-2",
     "uuid": "^3.2.1"
   },
   "keywords": [
