@@ -4,30 +4,35 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 import Navbar from '../components/Navbar'
-import './all.sass'
-import './stylesheet.css'
 
-import {Provider, Root} from 'rebass';
+// Reset and fonts
+import './style.css'
+
+import {Provider, Root, Box} from 'rebass';
 
 const theme = {
   fonts: {
-    // sans: '"Avenir Next", Helvetica, sans-serif',
-    sans: 'italian_plate_no2_condensedLt'
+    sans: '"Avenir Next", Helvetica, sans-serif',
+    // sans: 'italian_plate_no2_condensedLt'
   },
   fontSizes: [
     12, 16, 24, 36, 48, 72
   ],
   colors: {
-    blue: "black"
+    blue: "#021C72",
+    purple: "#D900FF",
+    grey: "#EFECE1"
   }
 }
 
 const TemplateWrapper = ({ children }) => (
   <Provider theme={theme}>
-    <Root>
-    <Helmet title="Herb & Bloom" />
-    <Navbar />
-    <div>{children()}</div>
+    <Root fontFamily="sans">
+      <Helmet title="Herb & Bloom" />
+      <Box bg="blue">
+        <Navbar/>
+      </Box>
+      <Box>{children()}</Box>
     </Root>
   </Provider>
 )

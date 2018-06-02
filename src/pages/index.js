@@ -1,8 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
+import React from "react";
+import PropTypes from "prop-types";
+import Link from "gatsby-link";
 // Get rebass
-import { Box, Heading, Button, Card } from 'rebass'
+import { Box, Button, Card } from "rebass";
+import { Heading, BackgroundImage } from "../components";
+import { withPrefix } from "gatsby-link";
 
 // First impressions: Herb & Bloom logo - for big impact
 
@@ -16,34 +18,32 @@ import { Box, Heading, Button, Card } from 'rebass'
 // We’d love to hear from you for any and all enquiries, so please feel free to
 // drop us a line at; info@herbandbloomlondon.co.uk
 
-
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
-
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
     return (
-      <Card>
+      <BackgroundImage ratio={2 / 3} src={withPrefix("/img/chemex.jpg")}>
         <Heading>HELLO WORLD</Heading>
         <Button>Rebass</Button>
-      </Card>
-    )
+      </BackgroundImage>
+    );
   }
 }
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
     ) {
       edges {
         node {
@@ -61,4 +61,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
