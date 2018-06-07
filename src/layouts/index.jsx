@@ -1,4 +1,6 @@
 // TODO use root component
+// TODO add support for IE
+import "babel-polyfill";
 import React from "react";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
@@ -72,20 +74,21 @@ const Title = styled(Heading)([]);
 
 class HeaderInner extends React.Component {
   render() {
-    const { anim, ...props } = this.props;
+    const { style, ...props } = this.props;
     const logoSizes = [12, 14, 16, 18].map(x => x * 16);
+    console.log(this.props);
     return (
       <Banner
         style={{
           WebkitFontSmoothing: "antialiased"
         }}
         color="white"
-        bg="black"
+        bg="purple"
         ratio={2 / 3}
         bgImage={homeBg}
         // backgroundSize="100px 100px"
         style={{
-          backgroundPosition: `0 ${anim.bgPos}px`,
+          ...style,
           backgroundRepeat: "no-repeat"
         }}
       >
@@ -105,7 +108,7 @@ class HeaderInner extends React.Component {
   }
 }
 
-const AnimatedInnerHeader = animated(HeaderInner);
+const HeaderInnerAnimated = animated(HeaderInner);
 
 class Header extends React.Component {
   state = { bgPos: -10 };
@@ -126,8 +129,7 @@ class Header extends React.Component {
   _calcScroll(h1) {
     var _window = window;
     var scrollPos = _window.scrollY;
-    this.setState(state => ({ ...state, bgPos: Math.round(scrollPos / 3) }));
-    console.log(scrollPos);
+    this.setState(state => ({ ...state, bgPos: Math.round(scrollPos / 2) }));
   }
 
   render() {
@@ -140,8 +142,17 @@ class Header extends React.Component {
     };
 
     return (
-      <Spring to={to}>
-        {anim => <AnimatedInnerHeader native {...props} anim={anim} />}
+      <Spring native to={to}>
+        {style => {
+          return (
+            <HeaderInnerAnimated
+              {...props}
+              style={{
+                backgroundPosition: style.bgPos.interpolate(x => `0 ${x}px`)
+              }}
+            />
+          );
+        }}
       </Spring>
     );
   }
