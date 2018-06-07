@@ -4,8 +4,6 @@ import styled from "styled-components";
 import sys from "@allforabit/system-components";
 import { size, color, themeGet, responsiveStyle } from "@allforabit/styled-system";
 
-window.s = size;
-
 export const LogoBase = props => {
   const themed = color(props);
   return (
