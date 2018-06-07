@@ -76,7 +76,6 @@ class HeaderInner extends React.Component {
   render() {
     const { style, ...props } = this.props;
     const logoSizes = [12, 14, 16, 18].map(x => x * 16);
-    console.log(this.props);
     return (
       <Banner
         style={{
@@ -118,7 +117,6 @@ class Header extends React.Component {
   // }
   componentDidMount() {
     // var h1 = parseInt(this.header.offsetHeight);
-    // console.log(this.header, "header");
     window.addEventListener("scroll", this._calcScroll.bind(this));
   }
 
