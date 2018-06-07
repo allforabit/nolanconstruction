@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-next",
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-styled-components",
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
@@ -35,5 +36,6 @@ module.exports = {
       }
     },
     "gatsby-plugin-netlify" // make sure to keep it last in the array
+
   ]
 };
