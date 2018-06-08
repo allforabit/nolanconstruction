@@ -124,10 +124,10 @@ const StyledBrandLink = sys({
 });
 
 const BelowHeader = props => (
-  <Box bg="blue" color="white" pb={4}>
+  <Box color="purple" pb={4} pt={4}>
     <Container>
       <Flex flexWrap="wrap" width={1}>
-        <Box width={[1, null, 2 / 3]}>
+        <Box width={[1, null, 5 / 8]}>
           <Text textAlign="justify">
             HERB & BLOOM is a new,
             innovative urban farming business soon to be opening in Battersea.
@@ -136,7 +136,7 @@ const BelowHeader = props => (
             restaurant industry and local communities.
           </Text>
         </Box>
-        <Box width={[1, null, 1 / 3]} pl={[0, null, 4]} mt={[3, null, 0]}>
+        <Box width={[1, null, 3 / 8]} pl={[0, null, 3]} mt={[3, null, 0]}>
           <Text fontSize={1} >
             We'd love to hear from you for any and all enquiries, so please feel
             free to drop us a line at{" "}
@@ -157,7 +157,7 @@ const HBIcon = () => {
 const Footer = props => (
   <Container>
     <Box color="black" mt={3} py={3} fontSize={0}>
-      <Divider w={1} borderColor="grey" />
+      <Divider w={1} borderColor="white" />
       <Flex alignItems="center" justifyContent="space-between">
         <Box>
           <Text>© 2018 HERB AND BLOOM</Text>
@@ -172,7 +172,7 @@ const Footer = props => (
 
 const TemplateWrapper = ({ children }) => (
   <Provider theme={theme}>
-    <Root fontFamily="sans">
+    <Root fontFamily="sans" bg="grey">
       <Helmet title="Herb & Bloom" />
       <Header />
       <BelowHeader />
