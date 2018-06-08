@@ -109,7 +109,7 @@ const StyledObfuscate = sys({
   hover: {
     color: "black"
   },
-  fontWeight: "bold"
+  // fontWeight: "bold"
 });
 
 const BrandLink = () => (
