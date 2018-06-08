@@ -15,6 +15,7 @@ import Obfuscate from "react-obfuscate";
 import { Spring, animated } from "react-spring";
 
 import homeBg from "../img/home-bg.png";
+import hbIconImg  from "../img/icon/icon-rgb-colour-no-background-small.png";
 
 import {
   Root,
@@ -34,8 +35,7 @@ import {
   Column,
   Row,
   Divider,
-  Link,
-  Circle
+  Link
 } from "rebass";
 
 import sys from "@allforabit/system-components";
@@ -72,7 +72,7 @@ const Title = styled(Heading)([]);
 // TODO sort out header font
 // TODO sort out general font
 
-class HeaderInner extends React.Component {
+class Header extends React.Component {
   render() {
     const { style, ...props } = this.props;
     const logoSizes = [12, 14, 16, 18].map(x => x * 16);
@@ -82,18 +82,13 @@ class HeaderInner extends React.Component {
           WebkitFontSmoothing: "antialiased"
         }}
         color="white"
-        bg="purple"
         ratio={2 / 3}
-        bgImage={homeBg}
+        bg="blue"
         // backgroundSize="100px 100px"
-        style={{
-          ...style,
-          backgroundRepeat: "no-repeat"
-        }}
       >
         <Box width={logoSizes} height={100}>
           <Logo size={logoSizes} color="white" />
-          <Box mt={5}>
+          <Box mt={5} color="purple">
             <Text textAlign="center" fontSize={2}>
               Grown in London.
             </Text>
@@ -107,54 +102,6 @@ class HeaderInner extends React.Component {
   }
 }
 
-const HeaderInnerAnimated = animated(HeaderInner);
-
-class Header extends React.Component {
-  state = { bgPos: -10 };
-  // constructor(props) {
-  //   super(props);
-  //   this.bannerDom = React.createRef();
-  // }
-  componentDidMount() {
-    // var h1 = parseInt(this.header.offsetHeight);
-    window.addEventListener("scroll", this._calcScroll.bind(this));
-  }
-
-  componentWillUnmount() {
-    // window.removeEventListener("scroll", this._calcScroll);
-  }
-
-  _calcScroll(h1) {
-    var _window = window;
-    var scrollPos = _window.scrollY;
-    this.setState(state => ({ ...state, bgPos: Math.round(scrollPos / 2) }));
-  }
-
-  render() {
-    const props = this.props;
-    const logoSizes = [12, 14, 16, 18].map(x => x * 16);
-    const bgPos = this.state.bgPos;
-
-    const to = {
-      bgPos
-    };
-
-    return (
-      <Spring native to={to}>
-        {style => {
-          return (
-            <HeaderInnerAnimated
-              {...props}
-              style={{
-                backgroundPosition: style.bgPos.interpolate(x => `0 ${x}px`)
-              }}
-            />
-          );
-        }}
-      </Spring>
-    );
-  }
-}
 
 const StyledObfuscate = sys({
   is: Obfuscate,
@@ -177,25 +124,20 @@ const StyledBrandLink = sys({
 });
 
 const BelowHeader = props => (
-  <Box bg="grey" color="blue" pb={4}>
-    <Container p={3}>
+  <Box bg="blue" color="white" pb={4}>
+    <Container>
       <Flex flexWrap="wrap" width={1}>
-        <Box
-          pr={3}
-          borderRight="1px solid blue"
-          width={[1, null, 2 / 3]}
-          mb={[3, null, 0]}
-        >
-          <Text lineHeight={1.5}>
-            <Link href="http://herbandbloom.co.uk">HERB & BLOOM</Link> is a new,
+        <Box width={[1, null, 2 / 3]}>
+          <Text textAlign="justify">
+            HERB & BLOOM is a new,
             innovative urban farming business soon to be opening in Battersea.
             Using modern hydroponic agricultural systems we will be delivering
             the freshest, premium culinary herbs & edible flowers to the London
             restaurant industry and local communities.
           </Text>
         </Box>
-        <Box width={[1, null, 1 / 3]}>
-          <Text lineHeight={1.5} fontSize={1}>
+        <Box width={[1, null, 1 / 3]} pl={[0, null, 4]} mt={[3, null, 0]}>
+          <Text fontSize={1} >
             We'd love to hear from you for any and all enquiries, so please feel
             free to drop us a line at{" "}
             <StyledObfuscate email="info@herbandbloom.co.uk" />
@@ -206,6 +148,12 @@ const BelowHeader = props => (
   </Box>
 );
 
+const HBIcon = () => {
+  return (
+    <Image src={hbIconImg} width={96} />
+  );
+}
+
 const Footer = props => (
   <Container>
     <Box color="black" mt={3} py={3} fontSize={0}>
@@ -215,9 +163,7 @@ const Footer = props => (
           <Text>© 2018 HERB AND BLOOM</Text>
         </Box>
         <Box>
-          <Circle size={48}>
-            <Logo size={32} pt="6px" color="white" />
-          </Circle>
+          <HBIcon />
         </Box>
       </Flex>
     </Box>
