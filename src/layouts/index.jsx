@@ -109,6 +109,7 @@ class Header extends React.Component {
           </Box>
         </Banner>
         <Banner
+          bg="blue"
           bgImage={pattern}
           backgroundSize="auto"
           minHeight={ [192, null, 256] }
