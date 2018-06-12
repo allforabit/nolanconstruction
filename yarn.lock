@@ -2,9 +2,15 @@
 # yarn lockfile v1
 
 
-"@allforabit/styled-system@>=2.0.1", "@allforabit/styled-system@^2.2.12":
+"@allforabit/styled-system@>=2.0.1":
   version "2.2.12"
   resolved "https://registry.yarnpkg.com/@allforabit/styled-system/-/styled-system-2.2.12.tgz#a3ee0ad3e6c045d2153884e2280bd57111edcfb9"
+  dependencies:
+    prop-types "^15.6.0"
+
+"@allforabit/styled-system@^2.2.13":
+  version "2.2.13"
+  resolved "https://registry.yarnpkg.com/@allforabit/styled-system/-/styled-system-2.2.13.tgz#08fa488ef6162c363bc718092f0a376b133fadf5"
   dependencies:
     prop-types "^15.6.0"
 

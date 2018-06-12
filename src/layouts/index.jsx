@@ -15,7 +15,8 @@ import Obfuscate from "react-obfuscate";
 import { Spring, animated } from "react-spring";
 
 import homeBg from "../img/home-bg.png";
-import hbIconImg  from "../img/icon/icon-rgb-colour-no-background-small.png";
+import hbIconImg from "../img/icon/icon-rgb-colour-no-background-small.png";
+import pattern from "../img/patterns/06/f-small.png";
 
 import {
   Root,
@@ -35,7 +36,8 @@ import {
   Column,
   Row,
   Divider,
-  Link
+  Link,
+  Select
 } from "rebass";
 
 import sys from "@allforabit/system-components";
@@ -73,42 +75,55 @@ const Title = styled(Heading)([]);
 // TODO sort out general font
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
+
+  componentDidMount() {}
+
   render() {
     const { style, ...props } = this.props;
     const logoSizes = [12, 14, 16, 18].map(x => x * 16);
     return (
-      <Banner
-        style={{
-          WebkitFontSmoothing: "antialiased"
-        }}
-        color="white"
-        ratio={2 / 3}
-        bg="blue"
-        // backgroundSize="100px 100px"
-      >
-        <Box width={logoSizes} height={100}>
-          <Logo size={logoSizes} color="white" />
-          <Box mt={5} color="purple">
-            <Text textAlign="center" fontSize={2}>
-              Grown in London.
-            </Text>
-            <Text textAlign="center" fontSize={2}>
-              For London.
-            </Text>
+      <Box>
+        <Banner
+          style={{
+            WebkitFontSmoothing: "antialiased"
+          }}
+          color="white"
+          ratio={2 / 3}
+          bg="blue"
+          // backgroundSize="100px 100px"
+        >
+          <Box width={logoSizes} height={100}>
+            <Logo size={logoSizes} color="white" />
+            <Box mt={5} color="purple">
+              <Text textAlign="center" fontSize={[2, null, 3]}>
+                Grown in London.
+              </Text>
+              <Text textAlign="center" fontSize={[2, null, 3]}>
+                For London.
+              </Text>
+            </Box>
           </Box>
-        </Box>
-      </Banner>
+        </Banner>
+        <Banner
+          bgImage={pattern}
+          backgroundSize="auto"
+          minHeight={ [192, null, 256] }
+        />
+      </Box>
     );
   }
 }
-
 
 const StyledObfuscate = sys({
   is: Obfuscate,
   color: "purple",
   hover: {
     color: "black"
-  },
+  }
   // fontWeight: "bold"
 });
 
@@ -124,39 +139,34 @@ const StyledBrandLink = sys({
 });
 
 const BelowHeader = props => (
-  <Box color="purple" pb={4} pt={4}>
-    <Container>
-      <Flex flexWrap="wrap" width={1}>
-        <Box width={[1, null, 5 / 8]}>
-          <Text textAlign="justify">
-            HERB & BLOOM is a new,
-            innovative urban farming business soon to be opening in Battersea.
-            Using modern hydroponic agricultural systems we will be delivering
-            the freshest, premium culinary herbs & edible flowers to the London
-            restaurant industry and local communities.
-          </Text>
-        </Box>
-        <Box width={[1, null, 3 / 8]} pl={[0, null, 3]} mt={[3, null, 0]}>
-          <Text fontSize={1} >
-            We'd love to hear from you for any and all enquiries, so please feel
-            free to drop us a line at{" "}
-            <StyledObfuscate email="info@herbandbloom.co.uk" />
-          </Text>
-        </Box>
-      </Flex>
+  <Box color="blue" pb={4} pt={4}>
+    <Container flexWrap="wrap" width={1} maxWidth={640} fontSize={[1, null, 2]}>
+      <Text textAlign="center" mb={[3, null, 4]}>
+        Herb & Bloom is an innovative vertical farming business opening summer
+        2018 in Battersea.
+      </Text>
+      <Text textAlign="center" mb={[3, null, 4]}>
+        Developed by two hosptiality professionals and supported by the
+        industrys leading indoor farming engineers, we will be delivering the
+        freshest, premium culinary herbs & edible flowers to Londons restaurants
+        and local communities.
+      </Text>
+      <Text textAlign="center" mb={[3, null, 4]}>
+        We strive for an open door policy to all interested parties. If you'd
+        like to come to our showcase, or have any other questions drop us a line
+        at <StyledObfuscate email="info@herbandbloom.co.uk" />
+      </Text>
     </Container>
   </Box>
 );
 
 const HBIcon = () => {
-  return (
-    <Image src={hbIconImg} width={96} />
-  );
-}
+  return <Image src={hbIconImg} width={96} />;
+};
 
 const Footer = props => (
   <Container>
-    <Box color="black" mt={3} py={3} fontSize={0}>
+    <Box color="black" mt={3} py={3} fontSize={1}>
       <Divider w={1} borderColor="white" />
       <Flex alignItems="center" justifyContent="space-between">
         <Box>
