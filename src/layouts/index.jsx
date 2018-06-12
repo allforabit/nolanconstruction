@@ -67,6 +67,11 @@ const theme = {
     blue: "#021C72",
     purple: "#D900FF",
     grey: "#EFECE1"
+  },
+  textStyle: {
+    footer: {
+      fontFamily: "italian_plate_no2_condensedLt"
+    }
   }
 };
 
@@ -112,7 +117,7 @@ class Header extends React.Component {
           bg="blue"
           bgImage={pattern}
           backgroundSize="auto"
-          minHeight={ [192, null, 256] }
+          minHeight={[192, null, 256]}
         />
       </Box>
     );
@@ -140,7 +145,14 @@ const StyledBrandLink = sys({
 });
 
 const BelowHeader = props => (
-  <Box color="blue" pb={4} pt={4}>
+  <Box
+    style={{
+      WebkitFontSmoothing: "antialiased"
+    }}
+    color="blue"
+    pb={4}
+    pt={4}
+  >
     <Container flexWrap="wrap" width={1} maxWidth={640} fontSize={[1, null, 2]}>
       <Text textAlign="center" mb={[3, null, 4]}>
         Herb & Bloom is an innovative vertical farming business opening summer
@@ -155,7 +167,7 @@ const BelowHeader = props => (
       <Text textAlign="center" mb={[3, null, 4]}>
         We strive for an open door policy to all interested parties. If you'd
         like to come to our showcase, or have any other questions drop us a line
-        at <StyledObfuscate email="info@herbandbloom.co.uk" />
+        at <StyledObfuscate email="info@herbandbloomlondon.co.uk" />
       </Text>
     </Container>
   </Box>
@@ -171,7 +183,16 @@ const Footer = props => (
       <Divider w={1} borderColor="white" />
       <Flex alignItems="center" justifyContent="space-between">
         <Box>
-          <Text>© 2018 HERB AND BLOOM</Text>
+          <Root
+            fontFamily="heading"
+            style={{
+              WebkitFontSmoothing: "antialiased"
+            }}
+          >
+            <Text fontSize={[2, null, 3]} color="blue">
+              © 2018 HERB AND BLOOM
+            </Text>
+          </Root>
         </Box>
         <Box>
           <HBIcon />
