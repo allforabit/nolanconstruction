@@ -6,4 +6,6 @@ description: A test description hi!
 tags:
   - ataghi
 ---
+![](/img/chemex.jpg)
+
 A test body hi!
