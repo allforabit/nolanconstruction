@@ -91,14 +91,15 @@ class Header extends React.Component {
     const { style, ...props } = this.props;
     const logoSizes = [12, 14, 16, 18].map(x => x * 16);
     return (
-      <Box>
+      <Box
+          bg="blue"
+        >
         <Banner
           style={{
             WebkitFontSmoothing: "antialiased"
           }}
           color="white"
           ratio={2 / 3}
-          bg="blue"
           // backgroundSize="100px 100px"
         >
           <Box width={logoSizes} height={100}>
