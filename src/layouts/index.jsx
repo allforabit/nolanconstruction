@@ -160,7 +160,7 @@ const BelowHeader = props => (
         2018 in Battersea.
       </Text>
       <Text textAlign="center" mb={[3, null, 4]}>
-        Developed by two hosptiality professionals and supported by the
+        Developed by two hospitality professionals and supported by the
         industrys leading indoor farming engineers, we will be delivering the
         freshest, premium culinary herbs & edible flowers to Londons restaurants
         and local communities.
