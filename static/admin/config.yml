@@ -35,6 +35,8 @@ collections:
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "Title", name: "title", widget: "string"}
+          - {label: "Another", name: "another", widget: "string"}
+          - {label: "And another...", name: "another", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
 
       # - file: "src/pages/products/index.md"

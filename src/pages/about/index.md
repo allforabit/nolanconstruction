@@ -1,6 +1,7 @@
 ---
 templateKey: about-page
 title: About hi
+another: A thing hi hello
 ---
 ### Shade-grown coffee yo
 
