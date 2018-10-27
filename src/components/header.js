@@ -1,33 +1,24 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Link from './link'
+import { Box } from 'rebass'
+import Container from './container'
 
 const Header = ({ siteTitle }) => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
+  <Box bg="blue" mb={2}>
+    <Container py={4} px={2}>
       <h1 style={{ margin: 0 }}>
         <Link
           to="/"
-          style={{
-            color: 'white',
+          color="white"
+          css={{
             textDecoration: 'none',
           }}
         >
           {siteTitle}
         </Link>
       </h1>
-    </div>
-  </div>
+    </Container>
+  </Box>
 )
 
 export default Header

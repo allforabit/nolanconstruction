@@ -1,9 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
+    title: 'Herb And Bloom London',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify-cms',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
