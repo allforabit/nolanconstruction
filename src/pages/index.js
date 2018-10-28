@@ -1,33 +1,62 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Layout from 'components/layout';
+import Box from 'components/box';
+import Title from 'components/title';
+import Gallery from 'components/gallery';
+import IOExample from 'components/io-example';
+import Modal from 'containers/modal';
+import { graphql } from 'gatsby';
 
-import Layout from '../components/layout'
-import { Box } from '../components/box'
-
-const IndexPage = () => (
+const Index = ({ data }) => (
   <Layout>
-    <Box bg="grey" p={4}>
-      <p>
-        Herb &amp; Bloom is London’s most central Vertical farm. We grow
-        microgreens and microherbs, which are plants in their infancy, this
-        means they deliver a far more potent concentration of flavours and
-        nutrient content. Our central London location means you will struggle to
-        find food that is fresher than this. Loved by chefs and foodies for the
-        vibrancy and flavour they add, they are fast growing in popularity with
-        the public for all that makes them so interesting, nutritional, tasty
-        and sustainable.
-      </p>
-      <p>
-        At Herb &amp; Bloom we use state of the art vertical farming technology
-        to deliver the very best quality microgreens to the London community.
-      </p>
-      <p>
-        Using the agricultural systems of the future, we put technology at the
-        forefront of our innovation and development, allowing us to grow fresh
-        produce, from seed, right in the heart of the city.
-      </p>
+    <Box>
+      <Title as="h2" size="large">
+        {data.homeJson.content.childMarkdownRemark.rawMarkdownBody}
+      </Title>
+      <Modal>
+        <video
+          src="https://i.imgur.com/gzFqNSW.mp4"
+          playsInline
+          loop
+          autoPlay
+          muted
+        />
+      </Modal>
     </Box>
+    <Gallery items={data.homeJson.gallery} />
+    <div style={{ height: '100vh' }} />
+    <IOExample />
   </Layout>
-)
+);
 
-export default IndexPage
+Index.propTypes = {
+  data: PropTypes.object.isRequired,
+};
+
+export default Index;
+
+export const query = graphql`
+  query HomepageQuery {
+    homeJson {
+      title
+      content {
+        childMarkdownRemark {
+          html
+          rawMarkdownBody
+        }
+      }
+      gallery {
+        title
+        copy
+        image {
+          childImageSharp {
+            fluid(maxHeight: 250, maxWidth: 250, quality: 90) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+        }
+      }
+    }
+  }
+`;

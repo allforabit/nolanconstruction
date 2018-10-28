@@ -1,106 +1,164 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  <a href="https://github.com/fabe/gatsby-universal">
+    <img
+      src="https://i.imgur.com/MFWrZSx.png"
+      height="80"
+      alt="gatsby-universal"
+      title="gatsby-universal"
+    />
   </a>
 </p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
 
-Kick off your project with this default boilerplate. This barebones starter ships with the main Gatsby configuration files you might need. 
+<p align="center">
+  <a href="https://circleci.com/gh/fabe/gatsby-universal">
+    <img
+      src="https://circleci.com/gh/fabe/gatsby-universal.svg?style=svg"
+      alt="CircleCI"
+    />
+  </a>
+  <a href="./package.json">
+    <img
+      src="https://img.shields.io/david/fabe/gatsby-universal.svg"
+      alt="dependencies"
+    />
+  </a>
+  <a href="https://github.com/prettier/prettier">
+    <img
+      src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg"
+      alt="styled with prettier"
+    />
+  </a>
+  <a href="https://www.netlify.com">
+    <img
+      src="https://img.shields.io/badge/deploys%20by-netlify-00c7b7.svg"
+      alt="deploys by netlify"
+    />
+  </a>
+</p>
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
+<p align="center">
+  An <em>opinionated</em> Gatsby v2 starter with React Context, styled-components, page transitions, scroll events with <code>IntersectionObserver</code> and a focus on accessibility and SEO. Made for state-of-the-art marketing sites.
+</p>
 
-## 🚀 Quick start
+<p align="center">
+  <strong>
+    You can access a demo of this starter online at <a href="https://gatsby-universal.netlify.com">gatsby-universal.netlify.com</a>.
+  </strong>
+</p>
 
-1.  **Install the Gatsby CLI.**
+***
 
-    The Gatsby CLI helps you create new sites using Gatsby starters (like this one!)
+## Features
 
-    ```sh
-    # install the Gatsby CLI globally
-    npm install -g gatsby-cli
-    ```
+- [X] 🤩 Page Transitions, component-based (with no-js support)
+- [X] 👮‍♂️ `IntersectionObserver`, component-based (with polyfill)
+- [X] 🌿 React Context for global UI state, with SSR
+- [X] 💅 [`styled-components`](https://www.styled-components.com/) v4
+- [X] 💯 Optimized with [Google Lighthouse](https://developers.google.com/web/tools/lighthouse/) (including test)
+- [X] 🔥 Code Splitting of CSS and JS (component based)
+- [X] 🔪 Inline SVG support
+- [X] ⚙️ One config file for site-wide settings
+- [X] 💙 Most social + meta tags in one component
+- [X] 🖼 All favicons generated, only one icon file needed
+- [X] 🌐 Offline support
+- [X] 📄 Manifest support
+- [X] 🗺 Sitemap support
+- [X] 📱 Generated media queries for easy use
+- [X] 😎 [Prettier](https://prettier.io/) for code style
+- [X] 👷‍♂️ [CircleCI](https://circleci.com/) support
+- [X] 🐙 Schema JSONLD
+- [X] 🔎 [`size-plugin`](https://github.com/GoogleChromeLabs/size-plugin) to keep an eye on your bundle sizes
+- [X] 👨‍🏫 ESLint (based on [`eslint-plugin-react`](./.eslintrc))
 
-2.  **Create a Gatsby site.**
+Do you have suggestions or feedback? [Open an issue](https://github.com/fabe/gatsby-universal/issues/new)!
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+## Lighthouse scores (on [Netlify](https://netlify.com))
 
-    ```sh
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter
-    ```
+[![Lighthouse scores (on Netlify)](https://lighthouse.now.sh/?perf=100&pwa=100&a11y=100&bp=100&seo=100)](https://circleci.com/gh/fabe/gatsby-universal)
 
-3.  **Start developing.**
+## Usage
 
-    Navigate into your new site’s directory and start it up.
+[![Edit on CodeSandbox](https://cdn.rawgit.com/fabe/1dd805eed0153b47aba2b50cea2469ec/raw/64b0ea90c2a425d3847da908053f5f337128259b/edit-on-codesandbox-32px.svg)](https://codesandbox.io/s/github/fabe/gatsby-universal)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/fabe/gatsby-universal)
 
-    ```sh
-    cd my-default-starter/
-    gatsby develop
-    ```
+```bash
+# Installation with `gatsby-cli`
+gatsby new my-site https://github.com/fabe/gatsby-universal
 
-4.  **Open the source code and start editing!**
+# Installation with `git clone`
+git clone my-site git@github.com:fabe/gatsby-universal.git
+cd my-site
+yarn install
 
-    Your site is now running at `http://localhost:8000`!
-    
-    *Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).*
-    
-    Open the the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
-    
-## 🧐 What's inside?
+# To develop
+yarn develop
 
-A quick look at the top-level files and directories you'll see in a Gatsby project.
+# To build
+yarn build
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    ├── README.md
-    └── yarn.lock
+# To test SSR (for Lighthouse etc.)
+yarn ssr
 
-  1.  **`/node_modules`**: The directory where all of the modules of code that your project depends on (npm packages) are automatically installed.  
-  
-  2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser), like your site header, or a page template. “Src” is a convention for “source code”.
-  
-  3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-  
-  4.  **`.prettierrc`**: This is a configuration file for a tool called [Prettier](https://prettier.io/), which is a tool to help keep the formatting of your code consistent.
-  
-  5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-  
-  6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-  
-  7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-  
-  8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-  
-  9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-  
-  10.  **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. (You won’t change this file directly).
-  
-  11.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-  
-  12.  **`README.md`**: A text file containing useful reference information about your project.
-  
-  13.  **`yarn.lock`**: [Yarn](https://yarnpkg.com/) is a package manager alternative to npm. You can use either yarn or npm, though all of the Gatsby docs reference npm.  This file serves essentially the same purpose as `package-lock.json`, just for a different package management system.
+# To format JS (precommit)
+yarn format
 
-## 🎓 Learning Gatsby
+# To generate favicons (included in `build`)
+yarn build:favicons
+```
 
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
+## Configuration
 
--   **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
+Find the site-wide configuration in `site-config.js`.
 
--   **To dive straight into code samples head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the “Guides”, API reference, and “Advanced Tutorials” sections in the sidebar.
+```js
+module.exports = {
+  siteTitle: `Gatsby Universal`,
+  siteTitleShort: `GatsbyU`,
+  siteDescription: `An opinionated starter for Gatsby.`,
+  siteUrl: `https://gu.fabianschultz.com`,
+  themeColor: `#000`,
+  backgroundColor: `#fff`,
+  pathPrefix: null,
+  logo: path.resolve(__dirname, 'src/images/icon.png'),
+  social: {
+    twitter: `gatsbyjs`,
+    fbAppId: `966242223397117`,
+  },
+};
+```
 
-## 💫 Deploy
+> 🚨 Don't forget to update your `robots.txt` inside `static/`!
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+## Folder structure
+```bash
+├── gatsby-browser.js # Specify how Gatsby renders pages in the browser
+├── gatsby-config.js # Gatsby config, mostly taken from `site-config.js`
+├── gatsby-node.js # Modify webpack config
+├── gatsby-ssr.js # Specify how Gatsby builds pages
+├── site-config.js # Global settings for the whole site, used by multiple scripts
+├── content # Content & data, in both json and markdown
+├── src
+│   ├── components
+│   │   ├── head # All meta tags etc.
+│   │   ├── io # Intersection Observer component, uses render props
+│   │   ├── layout # Layout component
+│   │   │   ├── layout.css.js # .css.js for component's `styled-components`
+│   │   │   └── layout.js
+│   │   └── transition # Page Transition component, used by Gatsby APIs
+│   ├── constants # Site-wide constants (breakpoints, colors, etc.)
+│   ├── containers # Container components if store is needed
+│   ├── helpers
+│   │   ├── schemaGenerator.js # Generates JSON-LD schema.org snippets
+│   │   └── mediaTemplates.js # Creates media queries for styled-components
+│   ├── images # Images needed by the site/theme (not content)
+│   ├── pages
+│   ├── store # Store and provider of a React.createContext instance
+│   └── global.css.js # Global CSS
+└── scripts
+    ├── lighthouse.test.js # Tests the site specified inside `site-config.js` with Google Lighthouse (WIP)
+    └── favicons.js # Generates favicons and manifest using one png only.
+```
+
+## Author
+
+* Fabian Schultz ([@fschultz_](https://twitter.com/fschultz_)) - [Stink Studios](https://stinkstudios.com)

@@ -1,22 +1,33 @@
+const siteConfig = require('./site-config');
+
 module.exports = {
   siteMetadata: {
-    title: 'Herb And Bloom London',
+    ...siteConfig,
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-netlify-cms',
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-offline`,
+    `gatsby-transformer-json`,
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-eslint`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        name: `content`,
+        path: `${__dirname}/content`,
       },
     },
-    'gatsby-plugin-offline',
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-webpack-size`,
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /images/,
+        },
+      },
+    },
   ],
-}
+};
