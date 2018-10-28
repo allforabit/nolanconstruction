@@ -13,4 +13,4 @@ collections:
     fields:
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
-      - { name: image, label: Body, widget: image }
+      - { name: image, label: Image, widget: image }
