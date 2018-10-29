@@ -1,16 +1,16 @@
 const path = require('path');
 
 module.exports = {
-  siteTitle: `Gatsby Universal`,
-  siteTitleShort: `GatsbyU`,
-  siteDescription: `An opinionated starter for Gatsby.`,
-  siteUrl: `https://gu.fabianschultz.com`,
-  themeColor: `#000`,
-  backgroundColor: `#fff`,
+  siteTitle: `Herb & Bloom`,
+  siteTitleShort: `H&B`,
+  siteDescription: `Grown in London. For London.`,
+  siteUrl: `https://herbandbloomlondon.co.uk`,
+  themeColor: `#021C72`,
+  backgroundColor: `#EFECE1`,
   pathPrefix: null,
   logo: path.resolve(__dirname, 'src/images/icon.png'),
   social: {
-    twitter: `gatsbyjs`,
+    twitter: `herbandbloomlondon`,
     fbAppId: `966242223397117`,
   },
 };
