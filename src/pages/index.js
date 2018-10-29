@@ -8,25 +8,37 @@ import Gallery from 'components/gallery';
 import { graphql } from 'gatsby';
 import { Logo } from '../components/logo';
 import { PrimaryHeading } from '../components/primary-heading';
+import IO from 'components/io';
 
 const TopBanner = () => (
-  <Flex
-    bg="blue"
-    css={{
-      height: '75vh',
-    }}
-    flexDirection="column"
-    alignItems="center"
-    justifyContent="center"
-  >
-    <Box mx="auto" mb={3}>
-      <Logo color="white" width={150} height={150} />
-      <Text textAlign="center" mt={4} color="purple" fontFamily="sans">
-        Grown in London. <br />
-        For London
-      </Text>
-    </Box>
-  </Flex>
+  <IO rootMargin="-50px">
+    {({ isVisible }) => (
+      <Flex
+        bg="blue"
+        css={{
+          height: '75vh',
+        }}
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Box
+          mx="auto"
+          mb={3}
+          css={{
+            transition: 'all 700ms ease',
+            transform: isVisible ? 'scale(1)' : 'scale(0)',
+          }}
+        >
+          <Logo color="white" width={150} height={150} />
+          <Text textAlign="center" mt={4} color="purple" fontFamily="sans">
+            Grown in London. <br />
+            For London
+          </Text>
+        </Box>
+      </Flex>
+    )}
+  </IO>
 );
 
 const Index = ({ data }) => (
@@ -53,7 +65,9 @@ const Index = ({ data }) => (
       <Container>
         <PrimaryHeading>Contact Us</PrimaryHeading>
         <Box p={4}>
-          <Heading>Herb & Bloom</Heading>
+          <Text fontWeight="bold" mb={2}>
+            Herb & Bloom
+          </Text>
           <Text>
             Avro House - Unit 105
             <br />5 Havelock Terrace
