@@ -21,7 +21,7 @@ export const PrimaryHeading = ({ children }) => (
             transition: 'all 500ms ease',
             opacity: isVisible ? 1 : 0,
             textTransform: 'uppercase',
-            transform: isVisible ? 'scale(1)' : 'scale(2)',
+            // transform: isVisible ? 'scale(1)' : 'scale(2)',
           }}
         >
           {children}
