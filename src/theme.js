@@ -19,5 +19,8 @@ export default {
     primary: {
       fontFamily: 'sans',
     },
+    menu: {
+      fontFamily: 'sans',
+    },
   },
 };

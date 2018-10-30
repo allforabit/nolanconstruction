@@ -11,10 +11,26 @@ import { Box, Button, Flex, Text } from './elements';
 import { MobileOnly } from './responsive';
 import { X } from 'react-feather';
 import { Logo } from './logo';
+import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
 
-const MobileMenuItem = ({ children }) => (
+// Offset all anchors by -60 to account for a fixed header
+// and scroll more quickly than the default 400ms
+configureAnchors({ offset: -60, scrollDuration: 200 });
+
+const MobileMenuItem = ({ children, anchor, onClick }) => (
   <Box>
-    <Button bg="grey" color="blue" fontFamily="sans">
+    <Button
+      bg="grey"
+      color="blue"
+      fontFamily="sans"
+      fontWeight="normal"
+      variant="menu"
+      onClick={evt => {
+        evt.preventDefault();
+        goToAnchor(anchor);
+        onClick && onClick();
+      }}
+    >
       {children}
     </Button>
   </Box>
@@ -22,6 +38,8 @@ const MobileMenuItem = ({ children }) => (
 
 MobileMenuItem.propTypes = {
   children: PropTypes.node.isRequired,
+  anchor: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
 };
 
 const MobileMenuBase = ({
@@ -57,9 +75,15 @@ const MobileMenuBase = ({
           height: '100%',
         }}
       >
-        <MobileMenuItem>Home</MobileMenuItem>
-        <MobileMenuItem>About Us</MobileMenuItem>
-        <MobileMenuItem>Contact</MobileMenuItem>
+        <MobileMenuItem anchor="home" onClick={handleMenuClose}>
+          Home
+        </MobileMenuItem>
+        <MobileMenuItem anchor="about" onClick={handleMenuClose}>
+          About Us
+        </MobileMenuItem>
+        <MobileMenuItem anchor="contact" onClick={handleMenuClose}>
+          Contact
+        </MobileMenuItem>
       </Flex>
       {/* <Flex css={{ opacity: 0.5 }}>
         <Logo color={blue} />
@@ -85,6 +109,7 @@ class Layout extends React.Component {
     this.setState({ menuOpen: true });
   };
   handleMenuClose = () => {
+    console.log('close');
     this.setState({ menuOpen: false });
   };
   render() {
@@ -98,15 +123,17 @@ class Layout extends React.Component {
         >
           <GlobalStyle />
           <Head />
+          {this.props.children}
           <Header
             title={this.props.data.site.siteMetadata.siteTitle}
             handleMenuIconClick={this.handleMenuOpen}
             css={{
-              position: 'absolute',
+              position: 'fixed',
               top: 0,
+              left: 0,
+              right: 0,
             }}
           />
-          {this.props.children}
           {this.state.menuOpen && (
             <MobileMenu handleMenuClose={this.handleMenuClose} />
           )}

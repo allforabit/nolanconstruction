@@ -1,23 +1,60 @@
 import React from 'react';
+import { Transition, animated } from 'react-spring';
 import PropTypes from 'prop-types';
-import { Box } from './elements';
 
-export const CarouselItem = ({ children }) => {
-  return <Box>{children}</Box>;
+const defaultStyles = {
+  overflow: 'hidden',
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '2em',
+  fontFamily: "'Kanit', sans-serif",
+  textTransform: 'uppercase',
 };
 
-CarouselItem.propTypes = {
-  children: PropTypes.node,
-};
+export class Carousel extends React.PureComponent {
+  state = { items: [], index: 0 };
 
-export class Carousel extends React.Component {
+  componentDidMount = () => {
+    this.timer = setInterval(() => {
+      const index = (this.state.index + 1) % this.props.items.length;
+      this.setState({ items: [this.props.items[index]], index });
+    }, 3500);
+  };
+
+  async componentWillUnmount() {
+    this.timer && clearInterval(this.timer);
+  }
+
   render() {
     return (
-      <Box>
-        {this.props.items.map((item, idx) => (
-          <CarouselItem key={idx}>{item}</CarouselItem>
-        ))}
-      </Box>
+      <div
+        style={{
+          overflow: 'hidden',
+          cursor: 'pointer',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <Transition
+          items={this.state.index}
+          from={{ opacity: 0 }}
+          enter={{ opacity: 1 }}
+          leave={{ opacity: 0 }}
+          trail={200}
+        >
+          {index => styles => (
+            <animated.div style={{ ...defaultStyles, ...styles }}>
+              {this.props.items[index]}
+            </animated.div>
+          )}
+        </Transition>
+      </div>
     );
   }
 }
