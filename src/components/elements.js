@@ -19,7 +19,7 @@ export const Heading = ({ css = {}, ...props }) => (
   <RBHeading
     {...props}
     fontFamily="heading"
-    fontSize={6}
+    fontSize={[6, 7]}
     css={{ ...css, fontWeight: 'normal' }}
   />
 );

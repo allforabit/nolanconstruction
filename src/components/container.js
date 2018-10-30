@@ -7,6 +7,7 @@ export const Container = props => (
     mx="auto"
     css={{
       maxWidth: '1024px',
+      overflow: 'hidden',
     }}
   />
 );
