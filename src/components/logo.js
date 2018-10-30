@@ -1,12 +1,7 @@
 import React from 'react';
 
 export const Logo = props => (
-  <svg
-    height={200.168}
-    width={212.137}
-    viewBox="0 0 198.879 187.656"
-    {...props}
-  >
+  <svg viewBox="0 0 198.879 187.656" width="1em" height="1em" {...props}>
     <defs>
       <clipPath id="b" clipPathUnits="userSpaceOnUse">
         <path d="M341.39 295.93h159.1v150.12h-159.1V295.93z" />

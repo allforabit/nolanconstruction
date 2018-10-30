@@ -10,8 +10,8 @@ import { Logo } from '../components/logo';
 import { PrimaryHeading } from '../components/primary-heading';
 import IO from 'components/io';
 import mapboxgl from 'mapbox-gl';
-import { relative } from 'path';
 import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
+import { Carousel } from '../components/carousel';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
@@ -90,36 +90,51 @@ class Map extends React.Component {
   }
 }
 
-const TopBanner = () => (
-  <IO rootMargin="-50px">
-    {({ isVisible }) => (
-      <Flex
-        bg="blue"
-        css={{
-          height: '75vh',
-        }}
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <Box
-          mx="auto"
-          mb={3}
+const TopBanner = () => {
+  return (
+    <IO rootMargin="-50px">
+      {({ isVisible }) => (
+        <Flex
+          bg="blue"
           css={{
-            transition: 'all 700ms ease',
-            transform: isVisible ? 'scale(1)' : 'scale(0)',
+            height: '100vh',
           }}
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
         >
-          <Logo color="white" width={150} height={150} />
-          <Text textAlign="center" mt={4} color="purple" fontFamily="sans">
-            Grown in London. <br />
-            For London
-          </Text>
-        </Box>
-      </Flex>
-    )}
-  </IO>
-);
+          <Carousel
+            items={[
+              <Box
+                key="logo"
+                mx="auto"
+                mb={3}
+                css={{
+                  transition: 'all 700ms ease',
+                  // transform: isVisible ? 'scale(1)' : 'scale(0)',
+                }}
+              >
+                <Box width={[200, 300]} mx="auto">
+                  <Logo color="white" width="100%" height="100%" />
+                </Box>
+                <Text
+                  textAlign="center"
+                  mt={4}
+                  color="purple"
+                  fontFamily="sans"
+                >
+                  Grown in London. <br />
+                  For London
+                </Text>
+              </Box>,
+              <Box key="image-1" />,
+            ]}
+          />
+        </Flex>
+      )}
+    </IO>
+  );
+};
 
 const Index = ({ data, theme }) => (
   <Layout>
@@ -142,17 +157,17 @@ const Index = ({ data, theme }) => (
         </Text>
       </Container>
     </Box>
-    <Box>
+    {/* <Box>
       <Container>
         <PrimaryHeading>Products</PrimaryHeading>
         <Gallery items={data.homeJson.gallery} />
       </Container>
-    </Box>
+    </Box> */}
     <Box bg="grey" key="contact-us">
       <Container>
         <PrimaryHeading>Contact Us</PrimaryHeading>
         <Flex flexWrap="wrap">
-          <Box width={[1, 1 / 2]} p={4}>
+          <Box width={[1, 1 / 2]} px={[3, 4]} py={4}>
             <Text fontWeight="bold" mb={2} fontSize={[2, 3]}>
               Herb & Bloom
             </Text>

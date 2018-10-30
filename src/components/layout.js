@@ -4,24 +4,35 @@ import { StaticQuery, graphql } from 'gatsby';
 import Head from './head';
 import Header from 'components/header';
 import GlobalStyle from 'global.css.js';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider, withTheme } from 'styled-components';
 import theme from '../theme';
 import '../fonts/fonts.css';
-import { Box, Button, Text } from './elements';
+import { Box, Button, Flex, Text } from './elements';
 import { MobileOnly } from './responsive';
 import { X } from 'react-feather';
+import { Logo } from './logo';
 
 const MobileMenuItem = ({ children }) => (
-  <Button variant="primary">{children}</Button>
+  <Box>
+    <Button bg="grey" color="blue" fontFamily="sans">
+      {children}
+    </Button>
+  </Box>
 );
+
 MobileMenuItem.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const MobileMenu = ({ handleMenuClose }) => (
+const MobileMenuBase = ({
+  handleMenuClose,
+  theme: {
+    colors: { blue },
+  },
+}) => (
   <MobileOnly
-    bg="blue"
-    color="white"
+    bg="grey"
+    color="blue"
     mr={4}
     css={{ position: 'fixed', top: 0, left: 0, bottom: 0, right: 0 }}
   >
@@ -30,17 +41,41 @@ const MobileMenu = ({ handleMenuClose }) => (
       css={{ position: 'absolute', top: 0, right: 0 }}
       onClick={handleMenuClose}
     >
-      <X />
+      <X color={blue} />
     </Box>
-    <MobileMenuItem>Hello</MobileMenuItem>
+    <Flex
+      flexDirection="column"
+      justifyContent="space-between"
+      css={{ height: '100%' }}
+    >
+      <Flex
+        fontSize={3}
+        alignItems="center"
+        justifyContent="center"
+        flexDirection="column"
+        css={{
+          height: '100%',
+        }}
+      >
+        <MobileMenuItem>Home</MobileMenuItem>
+        <MobileMenuItem>About Us</MobileMenuItem>
+        <MobileMenuItem>Contact</MobileMenuItem>
+      </Flex>
+      {/* <Flex css={{ opacity: 0.5 }}>
+        <Logo color={blue} />
+      </Flex> */}
+    </Flex>
   </MobileOnly>
 );
 
-MobileMenu.propTypes = {
+MobileMenuBase.propTypes = {
   handleMenuClose: PropTypes.func.isRequired,
+  theme: PropTypes.object,
 };
 
-MobileMenu.displayName = 'Mobile menu';
+MobileMenuBase.displayName = 'Mobile menu';
+
+const MobileMenu = withTheme(MobileMenuBase);
 
 class Layout extends React.Component {
   state = {
