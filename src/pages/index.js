@@ -160,7 +160,7 @@ const TopBanner = () => {
 
 const Index = ({ data, theme }) => (
   <Layout>
-    <TopBanner />
+    {/* <TopBanner />
     <Box bg="grey">
       <Container>
         <Text
@@ -178,7 +178,7 @@ const Index = ({ data, theme }) => (
           />
         </Text>
       </Container>
-    </Box>
+    </Box> */}
     <Spring items={slideShowItems} />
     {/* <Box>
       <Container>
