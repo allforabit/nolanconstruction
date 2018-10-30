@@ -153,10 +153,10 @@ const Index = ({ data, theme }) => (
         <PrimaryHeading>Contact Us</PrimaryHeading>
         <Flex flexWrap="wrap">
           <Box width={[1, 1 / 2]} p={4}>
-            <Text fontWeight="bold" mb={2}>
+            <Text fontWeight="bold" mb={2} fontSize={[2, 3]}>
               Herb & Bloom
             </Text>
-            <Text>
+            <Text fontSize={[2, 3]}>
               Avro House - Unit 105
               <br />5 Havelock Terrace
               <br />
@@ -168,11 +168,15 @@ const Index = ({ data, theme }) => (
             <Flex mt={3}>
               <Flex key="phone" mr={2} alignItems="center">
                 <Phone />
-                <Text ml={2}>078 7611 6588</Text>
+                <Text ml={2} fontSize={[2, 3]}>
+                  078 7611 6588
+                </Text>
               </Flex>
               <Flex key="email" alignItems="center">
                 <Mail />
-                <Text ml={2}>078 7611 6588</Text>
+                <Text ml={2} fontSize={[2, 3]}>
+                  078 7611 6588
+                </Text>
               </Flex>
             </Flex>
           </Box>
