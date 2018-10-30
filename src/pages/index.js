@@ -11,7 +11,7 @@ import { PrimaryHeading } from '../components/primary-heading';
 import IO from 'components/io';
 import mapboxgl from 'mapbox-gl';
 import { relative } from 'path';
-import { Phone, Mail } from 'react-feather';
+import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
@@ -121,7 +121,7 @@ const TopBanner = () => (
   </IO>
 );
 
-const Index = ({ data }) => (
+const Index = ({ data, theme }) => (
   <Layout>
     <TopBanner />
     <Box bg="grey">
@@ -151,7 +151,7 @@ const Index = ({ data }) => (
     <Box bg="grey" key="contact-us">
       <Container>
         <PrimaryHeading>Contact Us</PrimaryHeading>
-        <Flex>
+        <Flex flexWrap="wrap">
           <Box width={[1, 1 / 2]} p={4}>
             <Text fontWeight="bold" mb={2}>
               Herb & Bloom
@@ -178,7 +178,11 @@ const Index = ({ data }) => (
           </Box>
           <Box
             width={[1, 1 / 2]}
-            css={{ position: 'relative', minHeight: '50vh' }}
+            css={{
+              position: 'relative',
+              minHeight: '50vh',
+              // border: `1px solid ${theme.colors.grey}`,
+            }}
           >
             <Map />
           </Box>
@@ -186,13 +190,26 @@ const Index = ({ data }) => (
       </Container>
     </Box>
     <Box bg="blue" key="footer">
-      <Container />
+      <Container>
+        <Flex justifyContent="space-around" p={3}>
+          <Box>
+            <Instagram color="white" />
+          </Box>
+          <Box>
+            <Facebook color="white" />
+          </Box>
+          <Box>
+            <Twitter color="white" />
+          </Box>
+        </Flex>
+      </Container>
     </Box>
   </Layout>
 );
 
 Index.propTypes = {
   data: PropTypes.object.isRequired,
+  theme: PropTypes.object,
 };
 
 export default Index;
