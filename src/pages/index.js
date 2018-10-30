@@ -12,6 +12,7 @@ import IO from 'components/io';
 import mapboxgl from 'mapbox-gl';
 import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
 import { Carousel } from '../components/carousel';
+import { Spring } from '../components/spring';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
@@ -90,6 +91,27 @@ class Map extends React.Component {
   }
 }
 
+const slideShowItems = [
+  <Box
+    key="logo"
+    mx="auto"
+    mb={3}
+    css={{
+      transition: 'all 700ms ease',
+      // transform: isVisible ? 'scale(1)' : 'scale(0)',
+    }}
+  >
+    <Box width={[200, 300]} mx="auto">
+      <Logo color="white" width="100%" height="100%" />
+    </Box>
+    <Text textAlign="center" mt={4} color="purple" fontFamily="sans">
+      Grown in London. <br />
+      For London
+    </Text>
+  </Box>,
+  <Box key="image-1">Hello</Box>,
+];
+
 const TopBanner = () => {
   return (
     <IO rootMargin="-50px">
@@ -157,6 +179,7 @@ const Index = ({ data, theme }) => (
         </Text>
       </Container>
     </Box>
+    <Spring items={slideShowItems} />
     {/* <Box>
       <Container>
         <PrimaryHeading>Products</PrimaryHeading>
