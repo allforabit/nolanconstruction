@@ -9,7 +9,7 @@
     "format": "prettier --config ./.prettierrc --write src/**/*.js",
     "build:dir": "mkdir -p public/icons/",
     "build:favicons": "node scripts/favicons",
-    "build": "npm run build:dir && npm run build:favicons && gatsby build gatsby build",
+    "build": "yarn build:dir && yarn build:favicons && gatsby build",
     "test": "ava **/*.test.js --verbose"
   },
   "dependencies": {
