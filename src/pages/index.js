@@ -14,6 +14,7 @@ import mapboxgl from 'mapbox-gl';
 import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
 import { Carousel } from '../components/carousel';
 import { Element } from 'react-scroll';
+import { Icon } from '../components/icon';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
@@ -186,38 +187,44 @@ const Index = ({ data, theme }) => (
     <Element name="about">
       <Box bg="grey">
         <Container>
-          <Text
-            fontFamily="sans"
-            py={4}
-            px={[3, 4]}
-            fontSize={2}
-            lineHeight={1.25}
-            letterSpacing={1.1}
-            mb={[3, 4]}
-          >
-            <Text fontSize={4} mt={2}>
-              Herb & Bloom is London’s most central vertical farm.
+          <Flex flexWrap={['wrap', 'nowrap']}>
+            <Text
+              fontFamily="sans"
+              py={4}
+              px={[3, 4]}
+              w={[1, 2 / 3]}
+              fontSize={2}
+              lineHeight={1.25}
+              letterSpacing={1.1}
+              mb={[3, 4]}
+            >
+              <Text fontSize={4} mt={2}>
+                Herb & Bloom is London’s most central vertical farm.
+              </Text>
+              <Text mt={[3, 4]}>
+                Using state of the art hydroponic technology we grow the finest
+                micro greens and micro herbs for our local London community.
+              </Text>
+              <Text mt={[3, 4]}>
+                We grow our produce with quality at the forefront of our
+                practise, and harvest our crops on the day of delivery. This
+                means we can guarantee our customers have the freshest products
+                exactly when they need them.
+              </Text>
+              <Text mt={2}>
+                We promise to deliver quality, flavour and vibrancy with the
+                absolute minimum of food miles attached.
+              </Text>
+              <Text mt={[3, 4]}>
+                By putting technology at the forefront of our innovation and
+                development, Herb & Bloom will continue to expand and grow a
+                range fresh produce, from seed, right in the heart of the city.
+              </Text>
             </Text>
-            <Text mt={[3, 4]}>
-              Using state of the art hydroponic technology we grow the finest
-              micro greens and micro herbs for our local London community.
-            </Text>
-            <Text mt={[3, 4]}>
-              We grow our produce with quality at the forefront of our practise,
-              and harvest our crops on the day of delivery. This means we can
-              guarantee our customers have the freshest products exactly when
-              they need them.
-            </Text>
-            <Text mt={2}>
-              We promise to deliver quality, flavour and vibrancy with the
-              absolute minimum of food miles attached.
-            </Text>
-            <Text mt={[3, 4]}>
-              By putting technology at the forefront of our innovation and
-              development, Herb & Bloom will continue to expand and grow a range
-              fresh produce, from seed, right in the heart of the city.
-            </Text>
-          </Text>
+            <Box w={[1, 1 / 3]}>
+              <Icon />
+            </Box>
+          </Flex>
         </Container>
       </Box>
     </Element>
