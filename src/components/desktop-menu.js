@@ -30,6 +30,10 @@ const DesktopMenuItem = ({ children, anchor, onClick }) => (
         textTransform: 'uppercase',
         cursor: 'pointer',
         outline: 'none',
+        opacity: 0.75,
+        '&:hover': {
+          opacity: 0.85,
+        },
       }}
     >
       {children}
@@ -48,7 +52,7 @@ const DesktopMenuBase = ({
     colors: { blue },
   },
 }) => (
-  <DesktopOnly color="white" mr={4}>
+  <DesktopOnly color="white">
     <Flex
       fontSize={3}
       justifyContent="flex-end"

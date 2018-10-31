@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import posed from 'react-pose';
 import { Box } from 'components/elements';
 import { Menu } from 'react-feather';
 import { MobileOnly } from './responsive';

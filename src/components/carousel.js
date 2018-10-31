@@ -65,5 +65,5 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-  itemDuration: 200000000,
+  itemDuration: 6000,
 };
