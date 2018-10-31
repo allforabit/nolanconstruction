@@ -24,7 +24,7 @@ export class Carousel extends React.PureComponent {
     this.timer = setInterval(() => {
       const index = (this.state.index + 1) % this.props.items.length;
       this.setState({ items: [this.props.items[index]], index });
-    }, 3500);
+    }, this.props.itemDuration);
   };
 
   async componentWillUnmount() {
@@ -61,4 +61,9 @@ export class Carousel extends React.PureComponent {
 
 Carousel.propTypes = {
   items: PropTypes.array.isRequired,
+  itemDuration: PropTypes.number,
+};
+
+Carousel.defaultProps = {
+  itemDuration: 200000000,
 };

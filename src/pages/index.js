@@ -8,11 +8,12 @@ import Gallery from 'components/gallery';
 import { graphql } from 'gatsby';
 import { Logo } from '../components/logo';
 import { PrimaryHeading } from '../components/primary-heading';
+import { ObfuscatedLink } from '../components/obfuscated-link';
 import IO from 'components/io';
 import mapboxgl from 'mapbox-gl';
 import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
 import { Carousel } from '../components/carousel';
-import ScrollableAnchor from 'react-scrollable-anchor';
+import { Element } from 'react-scroll';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
@@ -178,17 +179,17 @@ TopBanner.propTypes = {
 };
 
 const Index = ({ data, theme }) => (
-  <Layout>
-    <ScrollableAnchor id="home">
+  <Layout id="site-layout">
+    <Element name="home">
       <TopBanner carouselData={data.homeJson.carousel} />
-    </ScrollableAnchor>
-    <ScrollableAnchor id="about">
+    </Element>
+    <Element name="about">
       <Box bg="grey">
         <Container>
           <Text
             fontFamily="sans"
             py={4}
-            px={3}
+            px={[3, 4]}
             fontSize={2}
             lineHeight={1.25}
             letterSpacing={1.1}
@@ -219,14 +220,14 @@ const Index = ({ data, theme }) => (
           </Text>
         </Container>
       </Box>
-    </ScrollableAnchor>
+    </Element>
     {/* <Box>
       <Container>
         <PrimaryHeading>Products</PrimaryHeading>
         <Gallery items={data.homeJson.gallery} />
       </Container>
     </Box> */}
-    <ScrollableAnchor id="contact">
+    <Element name="contact">
       <Box bg="grey" key="contact-us">
         <Container bg="white">
           <PrimaryHeading>Contact Us</PrimaryHeading>
@@ -244,8 +245,8 @@ const Index = ({ data, theme }) => (
                 SW8 4AS
                 <br />
               </Text>
-              <Flex mt={3}>
-                <Flex key="phone" mr={2} alignItems="center">
+              <Box mt={3}>
+                <Flex key="phone" mb={3} alignItems="center">
                   <Phone />
                   <Text ml={2} fontSize={[2, 3]}>
                     078 7611 6588
@@ -254,10 +255,10 @@ const Index = ({ data, theme }) => (
                 <Flex key="email" alignItems="center">
                   <Mail />
                   <Text ml={2} fontSize={[2, 3]}>
-                    078 7611 6588
+                    <ObfuscatedLink email="info@herbandbloomlondon.co.uk" />
                   </Text>
                 </Flex>
-              </Flex>
+              </Box>
             </Box>
             <Box
               width={[1, 1 / 2]}
@@ -272,7 +273,7 @@ const Index = ({ data, theme }) => (
           </Flex>
         </Container>
       </Box>
-    </ScrollableAnchor>
+    </Element>
     <Box bg="blue" key="footer">
       <Container>
         <Flex justifyContent="space-around" p={3}>

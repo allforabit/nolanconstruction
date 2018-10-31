@@ -8,3 +8,7 @@ const ResponsiveContainer = styled(Box)(display);
 export const MobileOnly = props => (
   <ResponsiveContainer display={['block', 'none']} {...props} />
 );
+
+export const DesktopOnly = props => (
+  <ResponsiveContainer display={['none', 'block']} {...props} />
+);

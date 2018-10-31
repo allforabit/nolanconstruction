@@ -10,25 +10,30 @@ import '../fonts/fonts.css';
 import { Box, Button, Flex, Text } from './elements';
 import { MobileOnly } from './responsive';
 import { X } from 'react-feather';
-import { Logo } from './logo';
-import { goToAnchor, configureAnchors } from 'react-scrollable-anchor';
-
-// Offset all anchors by -60 to account for a fixed header
-// and scroll more quickly than the default 400ms
-configureAnchors({ offset: -60, scrollDuration: 200 });
+import Scroll, { scroller } from 'react-scroll';
 
 const MobileMenuItem = ({ children, anchor, onClick }) => (
   <Box>
     <Button
       bg="grey"
       color="blue"
-      fontFamily="sans"
+      fontFamily="heading"
       fontWeight="normal"
-      variant="menu"
+      fontSize={5}
+      letterSpacing={1.1}
       onClick={evt => {
         evt.preventDefault();
-        goToAnchor(anchor);
+        scroller.scrollTo(anchor, {
+          duration: 200,
+          delay: 0,
+          smooth: true,
+          offset: -100,
+          container: 'site-layout',
+        });
         onClick && onClick();
+      }}
+      css={{
+        textTransform: 'uppercase',
       }}
     >
       {children}
@@ -85,9 +90,6 @@ const MobileMenuBase = ({
           Contact
         </MobileMenuItem>
       </Flex>
-      {/* <Flex css={{ opacity: 0.5 }}>
-        <Logo color={blue} />
-      </Flex> */}
     </Flex>
   </MobileOnly>
 );

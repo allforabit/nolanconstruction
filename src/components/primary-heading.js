@@ -14,9 +14,8 @@ export const PrimaryHeading = ({ children }) => (
         <Heading
           bg="blue"
           color="white"
-          px={4}
+          px={[3, 4]}
           py={2}
-          fontSize={8}
           css={{
             transition: 'all 500ms ease',
             opacity: isVisible ? 1 : 0,
