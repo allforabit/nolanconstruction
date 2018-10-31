@@ -29,5 +29,3 @@ export const Icon = props => (
     </g>
   </svg>
 );
-
-export default SvgComponent;

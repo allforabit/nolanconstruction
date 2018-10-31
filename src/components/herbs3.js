@@ -14,5 +14,3 @@ export const Herbs3 = props => (
     </g>
   </svg>
 );
-
-export default SvgComponent;

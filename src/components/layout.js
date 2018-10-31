@@ -27,7 +27,7 @@ const MobileMenuItem = ({ children, anchor, onClick }) => (
           duration: 200,
           delay: 0,
           smooth: true,
-          offset: -100,
+          offset: -50,
           container: 'site-layout',
         });
         onClick && onClick();

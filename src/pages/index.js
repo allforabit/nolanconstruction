@@ -15,6 +15,7 @@ import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
 import { Carousel } from '../components/carousel';
 import { Element } from 'react-scroll';
 import { Icon } from '../components/icon';
+import { Herbs3 } from '../components/herbs3';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
@@ -185,14 +186,14 @@ const Index = ({ data, theme }) => (
       <TopBanner carouselData={data.homeJson.carousel} />
     </Element>
     <Element name="about">
-      <Box bg="grey">
+      <Box bg="grey" css={{ minHeight: '1vh' }}>
         <Container>
           <Flex flexWrap={['wrap', 'nowrap']}>
             <Text
               fontFamily="sans"
               py={4}
               px={[3, 4]}
-              w={[1, 2 / 3]}
+              width={[1, 2 / 3]}
               fontSize={2}
               lineHeight={1.25}
               letterSpacing={1.1}
@@ -222,7 +223,7 @@ const Index = ({ data, theme }) => (
               </Text>
             </Text>
             <Box w={[1, 1 / 3]}>
-              <Icon />
+              <Icon width="100%" height="100%" />
             </Box>
           </Flex>
         </Container>
@@ -284,14 +285,23 @@ const Index = ({ data, theme }) => (
     <Box bg="blue" key="footer">
       <Container>
         <Flex justifyContent="space-around" p={3}>
-          <Box>
-            <Instagram color="white" />
+          <Box css={{ cursor: 'pointer' }}>
+            <a href="https://www.instagram.com/herb.and.bloom/" target="blank">
+              <Instagram color="white" />
+            </a>
           </Box>
-          <Box>
-            <Facebook color="white" />
+          <Box css={{ cursor: 'pointer' }}>
+            <a
+              href="https://www.facebook.com/Herb-Bloom-312946135950787/"
+              target="blank"
+            >
+              <Facebook color="white" />
+            </a>
           </Box>
-          <Box>
-            <Twitter color="white" />
+          <Box css={{ cursor: 'pointer' }}>
+            <a href="https://twitter.com/HerbandBloom" target="blank">
+              <Twitter color="white" />
+            </a>
           </Box>
         </Flex>
       </Container>
@@ -322,7 +332,7 @@ export const query = graphql`
         image {
           childImageSharp {
             fluid(maxHeight: 250, maxWidth: 250, quality: 90) {
-              ...GatsbyImageSharpFluid_tracedSVG
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -333,7 +343,7 @@ export const query = graphql`
         image {
           childImageSharp {
             fluid(maxWidth: 1200, quality: 90) {
-              ...GatsbyImageSharpFluid_tracedSVG
+              ...GatsbyImageSharpFluid
             }
           }
         }
