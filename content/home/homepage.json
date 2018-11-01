@@ -11,6 +11,21 @@
       "title": "Products",
       "copy": "Some text here",
       "image": "../images/carousel/products.jpg"
+    },
+    {
+      "title": "",
+      "copy": "",
+      "image": "../images/carousel/herbs-green-purple.jpg"
+    },
+    {
+      "title": "",
+      "copy": "",
+      "image": "../images/carousel/herbs-closeup.jpg"
+    },
+    {
+      "title": "",
+      "copy": "",
+      "image": "../images/carousel/soil-pods.jpg"
     }
   ],
   "gallery": [

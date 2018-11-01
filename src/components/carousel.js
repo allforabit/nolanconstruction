@@ -1,6 +1,7 @@
 import React from 'react';
 import { Transition, animated } from 'react-spring';
 import PropTypes from 'prop-types';
+import { Box, Flex } from '../components/elements';
 
 const defaultStyles = {
   overflow: 'hidden',
@@ -15,6 +16,47 @@ const defaultStyles = {
   fontSize: '2em',
   fontFamily: "'Kanit', sans-serif",
   textTransform: 'uppercase',
+};
+
+const CarouselProgressIndicator = ({ isActive }) => (
+  <Box
+    mx={2}
+    css={{
+      width: '14px',
+      height: '14px',
+      borderRadius: '50%',
+      background: isActive ? 'white' : 'none',
+      border: '1px solid white',
+    }}
+  />
+);
+
+CarouselProgressIndicator.propTypes = {
+  isActive: PropTypes.bool,
+};
+
+const range = (start, end) =>
+  new Array(end - start + 1)
+    .fill(undefined)
+    .map((value, index) => index + start);
+
+const CarouselProgressIndicators = ({ activeIndex, totalCount }) => {
+  return (
+    <Flex mx="auto" justifyContent="center">
+      {range(0, totalCount - 1).map(id => (
+        <CarouselProgressIndicator
+          key={id}
+          idx={id}
+          isActive={id === activeIndex}
+        />
+      ))}
+    </Flex>
+  );
+};
+
+CarouselProgressIndicators.propTypes = {
+  activeIndex: PropTypes.number,
+  totalCount: PropTypes.number,
 };
 
 export class Carousel extends React.PureComponent {
@@ -47,6 +89,7 @@ export class Carousel extends React.PureComponent {
           enter={{ opacity: 1 }}
           leave={{ opacity: 0 }}
           trail={200}
+          key="main-carousel"
         >
           {index => styles => (
             <animated.div style={{ ...defaultStyles, ...styles }}>
@@ -54,6 +97,15 @@ export class Carousel extends React.PureComponent {
             </animated.div>
           )}
         </Transition>
+        <Box
+          key="progress-indicators"
+          style={{ position: 'absolute', bottom: '64px', left: 0, right: 0 }}
+        >
+          <CarouselProgressIndicators
+            activeIndex={this.state.index}
+            totalCount={this.props.items.length}
+          />
+        </Box>
       </div>
     );
   }
@@ -65,5 +117,6 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
+  // itemDuration: 6000,
   itemDuration: 6000,
 };

@@ -15,32 +15,30 @@ import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
 import { Carousel } from '../components/carousel';
 import { Element } from 'react-scroll';
 import { Icon } from '../components/icon';
-import { Herbs3 } from '../components/herbs3';
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
 
 class Map extends React.Component {
   componentDidMount() {
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/light-v9',
-      zoom: 17.0,
-      center: [-0.14382, 51.47751],
-    });
-    this.map.on('dragstart', event => {
-      if (
-        !(
-          event.originalEvent &&
-          'touches' in event.originalEvent &&
-          event.originalEvent.touches.length >= 2
-        )
-      ) {
-        this.map.dragPan.disable();
-        this.map.dragPan.enable();
-      }
-    });
-
+    // this.map = new mapboxgl.Map({
+    //   container: this.mapContainer,
+    //   style: 'mapbox://styles/mapbox/light-v9',
+    //   zoom: 17.0,
+    //   center: [-0.14382, 51.47751],
+    // });
+    // this.map.on('dragstart', event => {
+    //   if (
+    //     !(
+    //       event.originalEvent &&
+    //       'touches' in event.originalEvent &&
+    //       event.originalEvent.touches.length >= 2
+    //     )
+    //   ) {
+    //     this.map.dragPan.disable();
+    //     this.map.dragPan.enable();
+    //   }
+    // });
     // this.map.on('load', function() {
     //   /* Image: An image is loaded and added to the map. */
     //   this.map.loadImage('https://i.imgur.com/MK4NUzI.png', (error, image) => {
