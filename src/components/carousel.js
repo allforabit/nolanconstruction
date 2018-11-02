@@ -107,7 +107,7 @@ export class Carousel extends React.PureComponent {
         </Transition>
         <Box
           key="progress-indicators"
-          style={{ position: 'absolute', bottom: '64px', left: 0, right: 0 }}
+          style={{ position: 'absolute', bottom: '32px', left: 0, right: 0 }}
         >
           <CarouselProgressIndicators
             activeIndex={this.state.index}
