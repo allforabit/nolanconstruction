@@ -1,41 +1,39 @@
+const siteConfig = require('./site-config');
+
 module.exports = {
   siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter"
+    ...siteConfig,
   },
   plugins: [
-    "gatsby-plugin-react-next",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-styled-components",
-    "gatsby-plugin-sass",
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-offline`,
+    `gatsby-transformer-json`,
+    `gatsby-transformer-remark`,
+    `gatsby-plugin-eslint`,
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: "pages"
-      }
+        name: `content`,
+        path: `${__dirname}/content`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-webpack-size`,
+    {
+      resolve: `gatsby-plugin-react-svg`,
+      options: {
+        rule: {
+          include: /images/,
+        },
+      },
     },
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        path: `${__dirname}/src/img`,
-        name: "images"
-      }
+        trackingId: 'UA-120821255-1',
+      },
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: []
-      }
-    },
-    {
-      resolve: "gatsby-plugin-netlify-cms",
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`
-      }
-    },
-    "gatsby-plugin-netlify" // make sure to keep it last in the array
-
-  ]
+  ],
 };

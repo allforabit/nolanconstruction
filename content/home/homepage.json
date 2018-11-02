@@ -1,0 +1,73 @@
+{
+  "title": "Home",
+  "content": "intro.md",
+  "carousel": [
+    {
+      "title": "Lab",
+      "copy": "Some text here",
+      "image": "../images/carousel/lab.jpg"
+    },
+    {
+      "title": "Products",
+      "copy": "Some text here",
+      "image": "../images/carousel/products.jpg"
+    },
+    {
+      "title": "",
+      "copy": "",
+      "image": "../images/carousel/herbs-green-purple.jpg"
+    },
+    {
+      "title": "",
+      "copy": "",
+      "image": "../images/carousel/herbs-closeup.jpg"
+    },
+    {
+      "title": "",
+      "copy": "",
+      "image": "../images/carousel/soil-pods.jpg"
+    }
+  ],
+  "gallery": [
+    {
+      "title": "React Context",
+      "copy": "For global styles.",
+      "image": "../images/gallery/180906_Herb&Bloom_352.jpg"
+    },
+    {
+      "title": "Page Transitions",
+      "copy": "Component-based for easy usage.",
+      "image": "../images/gallery/180906_Herb&Bloom_359.jpg"
+    },
+    {
+      "title": "Intersection Observer",
+      "copy": "Including a polyfill for Safari.",
+      "image": "../images/gallery/180906_Herb&Bloom_363.jpg"
+    },
+      {
+      "title": "React Context",
+      "copy": "For global styles.",
+      "image": "../images/gallery/180906_Herb&Bloom_375.jpg"
+    },
+    {
+      "title": "Page Transitions",
+      "copy": "Component-based for easy usage.",
+      "image": "../images/gallery/180906_Herb&Bloom_380.jpg"
+    },
+    {
+      "title": "Intersection Observer",
+      "copy": "Including a polyfill for Safari.",
+      "image": "../images/gallery/180906_Herb&Bloom_391.jpg"
+    },
+    {
+      "title": "Intersection Observer",
+      "copy": "Including a polyfill for Safari.",
+      "image": "../images/gallery/180906_Herb&Bloom_396.jpg"
+    },
+    {
+      "title": "Intersection Observer",
+      "copy": "Including a polyfill for Safari.",
+      "image": "../images/gallery/180906_Herb&Bloom_407.jpg"
+    }
+  ]
+}
