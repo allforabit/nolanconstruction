@@ -47,25 +47,24 @@ DesktopMenuItem.propTypes = {
   onClick: PropTypes.func,
 };
 
-const DesktopMenuBase = ({
-  theme: {
-    colors: { blue },
-  },
-}) => (
-  <DesktopOnly color="white">
-    <Flex
-      fontSize={3}
-      justifyContent="flex-end"
-      css={{
-        height: '100%',
-      }}
-    >
-      <DesktopMenuItem anchor="home">Home</DesktopMenuItem>
-      <DesktopMenuItem anchor="about">About Us</DesktopMenuItem>
-      <DesktopMenuItem anchor="contact">Contact</DesktopMenuItem>
-    </Flex>
-  </DesktopOnly>
-);
+const DesktopMenuBase = ({ theme }) => {
+  console.log(theme, 'dt-theme');
+  return (
+    <DesktopOnly color="white">
+      <Flex
+        fontSize={3}
+        justifyContent="flex-end"
+        css={{
+          height: '100%',
+        }}
+      >
+        <DesktopMenuItem anchor="home">Home</DesktopMenuItem>
+        <DesktopMenuItem anchor="about">About Us</DesktopMenuItem>
+        <DesktopMenuItem anchor="contact">Contact</DesktopMenuItem>
+      </Flex>
+    </DesktopOnly>
+  );
+};
 
 DesktopMenuBase.propTypes = {
   theme: PropTypes.object,

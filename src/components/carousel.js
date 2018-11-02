@@ -18,7 +18,7 @@ const defaultStyles = {
   textTransform: 'uppercase',
 };
 
-const CarouselProgressIndicator = ({ isActive }) => (
+const CarouselProgressIndicator = ({ isActive, onClick }) => (
   <Box
     mx={2}
     css={{
@@ -28,11 +28,13 @@ const CarouselProgressIndicator = ({ isActive }) => (
       background: isActive ? 'white' : 'none',
       border: '1px solid white',
     }}
+    onClick={onClick}
   />
 );
 
 CarouselProgressIndicator.propTypes = {
   isActive: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 const range = (start, end) =>
@@ -40,7 +42,7 @@ const range = (start, end) =>
     .fill(undefined)
     .map((value, index) => index + start);
 
-const CarouselProgressIndicators = ({ activeIndex, totalCount }) => {
+const CarouselProgressIndicators = ({ activeIndex, totalCount, onClick }) => {
   return (
     <Flex mx="auto" justifyContent="center">
       {range(0, totalCount - 1).map(id => (
@@ -48,6 +50,7 @@ const CarouselProgressIndicators = ({ activeIndex, totalCount }) => {
           key={id}
           idx={id}
           isActive={id === activeIndex}
+          onClick={() => onClick(id)}
         />
       ))}
     </Flex>
@@ -57,6 +60,7 @@ const CarouselProgressIndicators = ({ activeIndex, totalCount }) => {
 CarouselProgressIndicators.propTypes = {
   activeIndex: PropTypes.number,
   totalCount: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 export class Carousel extends React.PureComponent {
@@ -72,6 +76,10 @@ export class Carousel extends React.PureComponent {
   async componentWillUnmount() {
     this.timer && clearInterval(this.timer);
   }
+
+  handleIndicatorClick = index => {
+    this.setState({ index });
+  };
 
   render() {
     return (
@@ -104,6 +112,7 @@ export class Carousel extends React.PureComponent {
           <CarouselProgressIndicators
             activeIndex={this.state.index}
             totalCount={this.props.items.length}
+            onClick={this.handleIndicatorClick}
           />
         </Box>
       </div>

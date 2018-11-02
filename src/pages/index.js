@@ -15,30 +15,42 @@ import { Phone, Mail, Instagram, Facebook, Twitter } from 'react-feather';
 import { Carousel } from '../components/carousel';
 import { Element } from 'react-scroll';
 import { Icon } from '../components/icon';
+import { withTheme } from 'styled-components';
+
+const hasWebGLSupport = () => {
+  const canvas = document.createElement('canvas');
+  // Get WebGLRenderingContext from canvas element.
+  const webgl =
+    canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  return webgl ? true : false;
+};
 
 mapboxgl.accessToken =
   'pk.eyJ1IjoiYWxsZm9yYWJpdCIsImEiOiJjamhhbXNoY3QwcGZhMzBxZ2o2cmt2YnpqIn0.FNihk7OBud6P4ZhrZzJ_8g';
 
 class Map extends React.Component {
   componentDidMount() {
-    // this.map = new mapboxgl.Map({
-    //   container: this.mapContainer,
-    //   style: 'mapbox://styles/mapbox/light-v9',
-    //   zoom: 17.0,
-    //   center: [-0.14382, 51.47751],
-    // });
-    // this.map.on('dragstart', event => {
-    //   if (
-    //     !(
-    //       event.originalEvent &&
-    //       'touches' in event.originalEvent &&
-    //       event.originalEvent.touches.length >= 2
-    //     )
-    //   ) {
-    //     this.map.dragPan.disable();
-    //     this.map.dragPan.enable();
-    //   }
-    // });
+    if (!hasWebGLSupport()) {
+      return;
+    }
+    this.map = new mapboxgl.Map({
+      container: this.mapContainer,
+      style: 'mapbox://styles/mapbox/light-v9',
+      zoom: 17.0,
+      center: [-0.14382, 51.47751],
+    });
+    this.map.on('dragstart', event => {
+      if (
+        !(
+          event.originalEvent &&
+          'touches' in event.originalEvent &&
+          event.originalEvent.touches.length >= 2
+        )
+      ) {
+        this.map.dragPan.disable();
+        this.map.dragPan.enable();
+      }
+    });
     // this.map.on('load', function() {
     //   /* Image: An image is loaded and added to the map. */
     //   this.map.loadImage('https://i.imgur.com/MK4NUzI.png', (error, image) => {
@@ -178,139 +190,156 @@ TopBanner.propTypes = {
   carouselData: PropTypes.array.isRequired,
 };
 
-const Index = ({ data, theme }) => (
-  <Layout id="site-layout">
-    <Element name="home">
-      <TopBanner carouselData={data.homeJson.carousel} />
-    </Element>
-    <Element name="about">
-      <Box bg="grey" css={{ minHeight: '1vh' }}>
-        <Container>
-          <Flex flexWrap={['wrap', 'nowrap']}>
-            <Text
-              fontFamily="sans"
-              py={4}
-              px={[3, 4]}
-              width={[1, 2 / 3]}
-              fontSize={2}
-              lineHeight={1.25}
-              letterSpacing={1.1}
-              mb={[3, 4]}
-            >
-              <Text fontSize={4} mt={2}>
-                Herb & Bloom is London’s most central vertical farm.
-              </Text>
-              <Text mt={[3, 4]}>
-                Using state of the art hydroponic technology we grow the finest
-                micro greens and micro herbs for our local London community.
-              </Text>
-              <Text mt={[3, 4]}>
-                We grow our produce with quality at the forefront of our
-                practise, and harvest our crops on the day of delivery. This
-                means we can guarantee our customers have the freshest products
-                exactly when they need them.
-              </Text>
-              <Text mt={2}>
-                We promise to deliver quality, flavour and vibrancy with the
-                absolute minimum of food miles attached.
-              </Text>
-              <Text mt={[3, 4]}>
-                By putting technology at the forefront of our innovation and
-                development, Herb & Bloom will continue to expand and grow a
-                range fresh produce, from seed, right in the heart of the city.
-              </Text>
+const Contact = withTheme(({ theme }) => {
+  return (
+    <Box bg="grey" key="contact-us">
+      <Container bg="white">
+        <PrimaryHeading>Contact Us</PrimaryHeading>
+        <Flex flexWrap="wrap">
+          <Box width={[1, 1 / 2]} px={[3, 4]} py={4}>
+            <Text fontWeight="bold" mb={2} fontSize={[2, 3]} color="off-black">
+              Herb & Bloom
             </Text>
-            <Box w={[1, 1 / 3]}>
-              <Icon width="100%" height="100%" />
+            <Text fontSize={[2, 3]} color="off-black">
+              Avro House - Unit 105
+              <br />5 Havelock Terrace
+              <br />
+              London
+              <br />
+              SW8 4AS
+              <br />
+            </Text>
+            <Box mt={3}>
+              <Flex key="phone" mb={3} alignItems="center">
+                <Phone color={theme.colors['off-black']} />
+                <Text ml={2} fontSize={[2, 3]} color="off-black">
+                  078 7611 6588
+                </Text>
+              </Flex>
+              <Flex key="email" alignItems="center">
+                <Mail color={theme.colors['off-black']} />
+                <Text ml={2} fontSize={[2, 3]} color="off-black">
+                  <ObfuscatedLink
+                    email="info@herbandbloomlondon.co.uk"
+                    color="off-black"
+                  />
+                </Text>
+              </Flex>
             </Box>
-          </Flex>
-        </Container>
-      </Box>
-    </Element>
-    {/* <Box>
+          </Box>
+          <Box
+            width={[1, 1 / 2]}
+            css={{
+              position: 'relative',
+              minHeight: '50vh',
+              // border: `1px solid ${theme.colors.grey}`,
+            }}
+          >
+            <Map />
+          </Box>
+        </Flex>
+      </Container>
+    </Box>
+  );
+});
+
+const IndexBase = ({ data, theme }) => {
+  return (
+    <Layout id="site-layout">
+      <Element name="home">
+        <TopBanner carouselData={data.homeJson.carousel} />
+      </Element>
+      <Element name="about">
+        <Box bg="grey" css={{ minHeight: '1vh' }}>
+          <Container>
+            <Flex flexWrap={['wrap', 'nowrap']}>
+              <Text
+                fontFamily="sans"
+                color="off-black"
+                py={4}
+                px={[3, 4]}
+                width={[1, 2 / 3]}
+                fontSize={2}
+                lineHeight={1.25}
+                letterSpacing={1.1}
+                mb={[3, 4]}
+              >
+                <Text fontSize={4} mt={2}>
+                  Herb & Bloom is London’s most central vertical farm.
+                </Text>
+                <Text mt={[3, 4]}>
+                  We have harnessed state of the art hydroponics technology to
+                  cultivate the finest microgreens and microherbs for our local
+                  London community.
+                </Text>
+                <Text mt={[3, 4]}>
+                  Quality is at the forefront of our practise, and we harvest
+                  our crops on the day of delivery. This means we can guarantee
+                  our customers the freshest produce exactly when they need it.
+                </Text>
+                <Text mt={2}>
+                  We promise to deliver quality, flavour and vibrancy with an
+                  absolute minimum in associated food miles.
+                </Text>
+                <Text mt={[3, 4]}>
+                  By investing in technological innovation, Herb & Bloom is
+                  committed to expanding our range of fresh produce, grown from
+                  seed, right in the very heart of the city.
+                </Text>
+              </Text>
+              <Box w={[1, 1 / 3]}>
+                <Icon width="100%" height="100%" />
+              </Box>
+            </Flex>
+          </Container>
+        </Box>
+      </Element>
+      {/* <Box>
       <Container>
         <PrimaryHeading>Products</PrimaryHeading>
         <Gallery items={data.homeJson.gallery} />
       </Container>
     </Box> */}
-    <Element name="contact">
-      <Box bg="grey" key="contact-us">
-        <Container bg="white">
-          <PrimaryHeading>Contact Us</PrimaryHeading>
-          <Flex flexWrap="wrap">
-            <Box width={[1, 1 / 2]} px={[3, 4]} py={4}>
-              <Text fontWeight="bold" mb={2} fontSize={[2, 3]}>
-                Herb & Bloom
-              </Text>
-              <Text fontSize={[2, 3]}>
-                Avro House - Unit 105
-                <br />5 Havelock Terrace
-                <br />
-                London
-                <br />
-                SW8 4AS
-                <br />
-              </Text>
-              <Box mt={3}>
-                <Flex key="phone" mb={3} alignItems="center">
-                  <Phone />
-                  <Text ml={2} fontSize={[2, 3]}>
-                    078 7611 6588
-                  </Text>
-                </Flex>
-                <Flex key="email" alignItems="center">
-                  <Mail />
-                  <Text ml={2} fontSize={[2, 3]}>
-                    <ObfuscatedLink email="info@herbandbloomlondon.co.uk" />
-                  </Text>
-                </Flex>
-              </Box>
+      <Element name="contact">
+        <Contact />
+      </Element>
+      <Box bg="blue" key="footer">
+        <Container>
+          <Flex justifyContent="space-around" p={3}>
+            <Box css={{ cursor: 'pointer' }}>
+              <a
+                href="https://www.instagram.com/herb.and.bloom/"
+                target="blank"
+              >
+                <Instagram color="white" />
+              </a>
             </Box>
-            <Box
-              width={[1, 1 / 2]}
-              css={{
-                position: 'relative',
-                minHeight: '50vh',
-                // border: `1px solid ${theme.colors.grey}`,
-              }}
-            >
-              <Map />
+            <Box css={{ cursor: 'pointer' }}>
+              <a
+                href="https://www.facebook.com/Herb-Bloom-312946135950787/"
+                target="blank"
+              >
+                <Facebook color="white" />
+              </a>
+            </Box>
+            <Box css={{ cursor: 'pointer' }}>
+              <a href="https://twitter.com/HerbandBloom" target="blank">
+                <Twitter color="white" />
+              </a>
             </Box>
           </Flex>
         </Container>
       </Box>
-    </Element>
-    <Box bg="blue" key="footer">
-      <Container>
-        <Flex justifyContent="space-around" p={3}>
-          <Box css={{ cursor: 'pointer' }}>
-            <a href="https://www.instagram.com/herb.and.bloom/" target="blank">
-              <Instagram color="white" />
-            </a>
-          </Box>
-          <Box css={{ cursor: 'pointer' }}>
-            <a
-              href="https://www.facebook.com/Herb-Bloom-312946135950787/"
-              target="blank"
-            >
-              <Facebook color="white" />
-            </a>
-          </Box>
-          <Box css={{ cursor: 'pointer' }}>
-            <a href="https://twitter.com/HerbandBloom" target="blank">
-              <Twitter color="white" />
-            </a>
-          </Box>
-        </Flex>
-      </Container>
-    </Box>
-  </Layout>
-);
+    </Layout>
+  );
+};
 
-Index.propTypes = {
+IndexBase.propTypes = {
   data: PropTypes.object.isRequired,
   theme: PropTypes.object,
 };
+
+const Index = IndexBase;
 
 export default Index;
 

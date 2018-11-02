@@ -1,6 +1,7 @@
 export default {
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
   colors: {
+    'off-black': '#262626',
     blue: '#021C72',
     purple: '#D900FF',
     grey: '#EFECE1',
