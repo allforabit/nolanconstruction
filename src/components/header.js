@@ -32,7 +32,7 @@ const Header = ({ title, handleMenuIconClick, ...props }) => (
         position: 'absolute',
       }}
     /> */}
-    <Box bg="blue">
+    <Box bg="red">
       <Nav handleMenuIconClick={handleMenuIconClick} />
     </Box>
   </Box>

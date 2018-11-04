@@ -16,7 +16,7 @@ const MobileMenuItem = ({ children, anchor, onClick }) => (
   <Box>
     <Button
       bg="grey"
-      color="blue"
+      color="red"
       fontFamily="heading"
       fontWeight="normal"
       fontSize={5}
@@ -50,12 +50,12 @@ MobileMenuItem.propTypes = {
 const MobileMenuBase = ({
   handleMenuClose,
   theme: {
-    colors: { blue },
+    colors: { red },
   },
 }) => (
   <MobileOnly
     bg="grey"
-    color="blue"
+    color="red"
     mr={4}
     css={{ position: 'fixed', top: 0, left: 0, bottom: 0, right: 0 }}
   >
@@ -64,7 +64,7 @@ const MobileMenuBase = ({
       css={{ position: 'absolute', top: 0, right: 0 }}
       onClick={handleMenuClose}
     >
-      <X color={blue} />
+      <X color={red} />
     </Box>
     <Flex
       flexDirection="column"
