@@ -109,7 +109,7 @@ const TopBanner = ({ carouselData }) => {
     <IO rootMargin="-50px">
       {({ isVisible }) => (
         <Flex
-          bg="blue"
+          bg="red"
           css={{
             height: '100vh',
           }}
@@ -172,12 +172,11 @@ const TopBanner = ({ carouselData }) => {
             <Text
               textAlign="center"
               mt={4}
-              color="purple"
+              color="dark-grey"
               fontFamily="sans"
               fontSize={[4, 5]}
             >
-              Grown in London. <br />
-              For London
+              Creative Building Solutions.
             </Text>
           </Box>
         </Flex>
@@ -303,7 +302,7 @@ const IndexBase = ({ data, theme }) => {
       <Element name="contact">
         <Contact />
       </Element>
-      <Box bg="blue" key="footer">
+      <Box bg="red" key="footer">
         <Container>
           <Flex justifyContent="space-around" p={3}>
             <Box css={{ cursor: 'pointer' }}>

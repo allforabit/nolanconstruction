@@ -19,7 +19,7 @@ const GalleyItem = ({ title, copy, image, highlighted, ...rest }) => (
       alt={title}
     />
     <Box
-      bg="blue"
+      bg="red"
       color="white"
       p={4}
       css={{

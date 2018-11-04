@@ -12,7 +12,7 @@ export const PrimaryHeading = ({ children }) => (
     {({ isVisible }) => (
       <Box css={{ position: 'relative' }}>
         <Heading
-          bg="blue"
+          bg="red"
           color="white"
           px={[3, 4]}
           py={2}
